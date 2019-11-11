@@ -37,5 +37,23 @@ namespace UnmanagedCode.PowerManagement.Configuration
            out long time,
            uint nOutputBufferSize
            );
+
+        // for file hibernation or removing time information
+        [DllImport("powrprof.dll")]
+        public static extern uint CallNtPowerInformation(
+            int InformationLevel,
+            bool lpInputBuffer,
+            int nInputBufferSize,
+            IntPtr time,
+            uint nOutputBufferSize
+        );
+
+        // for suspend pc
+        [DllImport("PowrProf.dll", SetLastError = true)]
+        public static extern uint SetSuspendState(
+            bool Hibernate,
+            bool ForceCritical,
+            bool DisableWakeEvent
+        );
     }
 }
