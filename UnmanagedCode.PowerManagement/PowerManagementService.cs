@@ -74,6 +74,12 @@ namespace UnmanagedCode.PowerManagement
             return HibernateFileAction(HibernateFileActions.Reserve);
         }
 
+        /// <summary>
+        /// Suspends the system by shutting power down.
+        /// </summary>
+        /// <param name="hibernate">If this parameter is TRUE, the system hibernates. If the parameter is FALSE, the system is suspended.</param>
+        /// <param name="forceCritical">don't take an attantion on this parameter. He does nothing.</param>
+        /// <param name="disableWakeEvent">If this parameter is TRUE, the system disables all wake events. If the parameter is FALSE, any system wake events remain enabled.</param>
         public void SuspendState(bool hibernate, bool forceCritical, bool disableWakeEvent)
         {
             uint result = PowerManagementConfiguration.SetSuspendState(hibernate, forceCritical, disableWakeEvent);
